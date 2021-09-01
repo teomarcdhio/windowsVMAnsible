@@ -1,7 +1,0 @@
----
-ansible_user=testadmin
-ansible_password=Password1234!
-ansible_connection=winrm
-ansible_winrm_transport=basic
-ansible_winrm_server_cert_validation=ignore
-ansible_port=5986
