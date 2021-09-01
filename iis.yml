@@ -1,5 +1,7 @@
 ---
 - hosts: azurevms
+  vars_files:
+     - "./vars.yml"
   gather_facts: no
   tasks:
   - name: Install IIS features
