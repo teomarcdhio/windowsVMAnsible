@@ -1,0 +1,12 @@
+[azurevms]
+# Change the below IPs to the IPs that you get from Azure.
+51.140.113.100
+51.145.39.118
+
+[azurevms:vars]
+ansible_user=testadmin
+ansible_password=Password1234!
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+ansible_port=5986
