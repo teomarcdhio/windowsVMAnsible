@@ -1,0 +1,17 @@
+---
+- name: Run Updates on Windows Servers then wait 15 mins
+  hosts: directoryservers
+  vars_files:
+     - "./vars.yml"
+  gather_facts: no
+  connection: winrm
+
+  tasks:
+    win_updates:
+      category_names:
+        - CriticalUpdates
+        - SecurityUpdates
+      blacklist:
+        - Microsoft Silverlight
+    reboot: yes
+    reboot_timeout: 900

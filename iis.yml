@@ -11,6 +11,7 @@
         - Web-Common-Http
         - Web-Mgmt-Service
       include_management_tools: yes
+      include_sub_features: yes
       state: present
       
   - name: Enable IIS remote management
@@ -32,16 +33,22 @@
       name: WMSvc
       start_mode: auto
       state: started
-      
-  - name: install net core iis hosting module with no frameworks
+
+  - name: install .net 4.6.1 iis hosting module with no frameworks
     win_chocolatey:
-      name: "dotnetcore-windowshosting"
-      version: "3.1.0"
-      install_args: "OPT_NO_SHARED_CONFIG_CHECK=1"
+      name: dotnet4.6.1
       state: present
-      notify: restart IIS
+
+  - name: install net 3.5 iis hosting module with no frameworks
+    win_chocolatey:
+      name: dotnet3.5
+      state: present
 
   - name: Create logging directory
     win_file:
       path: c:\logs
       state: directory
+
+  handlers:
+    - name: restart IIS
+      win_shell: '& {iisreset}'
